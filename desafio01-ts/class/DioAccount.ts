@@ -29,7 +29,7 @@ export abstract class DioAccount {
   }
 
   withdraw = (valor: number): void => {
-    if (this.validateStatus() || this.validadeSaque(valor) ) {
+    if (this.validateStatus() && this.validadeSaque(valor) ) {
       this.balance = this.balance - valor
       console.log('Você fez um saque no valor de: ', valor)
       console.log('o saldo da sua conta é: ', this.balance)
@@ -46,7 +46,7 @@ export abstract class DioAccount {
   private validadeSaque = (valor : number): boolean =>{
     return valor < this.balance
   }
-  private validateStatus = (): boolean => {
+  validateStatus = (): boolean => {
     if (this.status) {
       return this.status
     }
